@@ -1,0 +1,18 @@
+# Personal/Private - Not synced to remote
+mcp-servers/
+node_modules/
+cache/
+debug/
+logs/
+file-history/
+shell-snapshots/
+paste-cache/
+plans/
+statsig/
+todos/
+projects/
+plugins/
+.env
+.DS_Store
+stats-cache.json
+history.jsonl
