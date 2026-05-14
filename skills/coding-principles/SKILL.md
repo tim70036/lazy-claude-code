@@ -15,6 +15,7 @@ Universal coding standards applicable across all projects:
 - No emoji in the code or documentation. Be professional.
 - Readability First. Code should be easy to understand and follow.
 - Explicit over implicit - No magic, clear dependencies
+- Strive not to set default values for config or parameter. Always let the user to set the value.
 - Type safety - always value type safety even using dynamic type language.
 - Clean code - Self-documenting, minimal comments
 
