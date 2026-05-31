@@ -16,3 +16,6 @@ plugins/
 .DS_Store
 stats-cache.json
 history.jsonl
+tasks
+sessions
+backups
