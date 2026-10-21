@@ -1,36 +1,33 @@
 ---
 name: coding-principles
-description: Universal coding principles, best practices, and patterns for all code design and development.
+description: Load before designing or writing code, data pipelines, schemas, APIs or repo docs. Holds the owner's design defaults, code standards and documentation rules.
 ---
 
-# Architectural Principles
-When designing and developing features, you should follow the following architectural principles specify in ~/.claude/skills/architecture-principle.md
-These are the guideline for the every decision made during the design and development of the feature.
+# Design defaults
 
-# Coding Standards & Best Practices
+- Start from the business questions. Describe the final state (what exists and which question each part answers), not the process.
+- Before building, define done as checks the owner can run (queries, test questions).
+- Extend existing structures. Do not change the meaning of an existing field. Add only what a question needs.
+- Prefer the smaller change. Keep nothing "for later": no unused fields, docs or code (YAGNI).
+- Explicit over implicit: no magic, clear dependencies, no hidden side effects.
+- Fail fast and loud: no silent failure; keep the error context.
+- Treat a contract with another team as the source of truth. Confirm each field with a real example and the step where its value is computed.
+- For architecture design, use ~/.claude/skills/architecture-principle.md as a reference. Select only the principles that apply to the decision.
 
-Universal coding standards applicable across all projects:
+# Code standards
 
-- Do not use print, console.log, etc.. Always use logger instead.
-- No emoji in the code or documentation. Be professional.
-- Readability First. Code should be easy to understand and follow.
-- Explicit over implicit - No magic, clear dependencies
-- Strive not to set default values for config or parameter. Always let the user to set the value.
-- Type safety - always value type safety even using dynamic type language.
-- Clean code - Self-documenting, minimal comments
+- Readability first. Self-documenting code; add a comment only for a non-obvious constraint.
+- Type safety, also in dynamic languages.
+- Use a logger, not print or console.log. Exception: print is the documented best practice of the platform for that output.
+- Do not give a default value to a required parameter or config value. The caller must set it.
+- No emoji in code or documentation.
 
-# Documentation Rule
+# Documentation
 
-When creating documentation, you should follow the following rules:
-
-- Documentation should be concise, streamlined and easy to understand.
-- Documentation should not contain hard code info that could subject to change in the future. For example, specific file path or feature name.
-- Documentation should have a goal to 
-  - enable user quickly undertand the code how to setup and run the code
-  - understand the purpose behind the design so they can make the right decision when developing.
-  - conventions/guidelines that the user should follow.
-- Documentation should not have unnecessary information such as next step, estimation etc.
-- Documentation should not have duplicate content accross different sections.
-
-** Remember:** Architectural principles are the guideline for the every decision made during the design and development of the feature. 
-Always refer to the architectural principles when making any decision.
+- Repo docs hold only durable knowledge for future development:
+  - how to set up and run the code,
+  - the reason behind each design, so a developer can make the right decision,
+  - conventions to follow.
+- No progress, release state, next steps or estimates in repo docs.
+- Concise and easy to read. No duplicate content across sections.
+- No details that change often, such as exact file paths or feature names, unless the doc is about them.

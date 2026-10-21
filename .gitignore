@@ -1,21 +1,21 @@
-# Personal/Private - Not synced to remote
-mcp-servers/
-node_modules/
-cache/
-debug/
-logs/
-file-history/
-shell-snapshots/
-paste-cache/
-plans/
-statsig/
-todos/
-projects/
-plugins/
-.env
+# Allowlist: ignore everything, then track only files I write myself.
+# Claude Code adds new runtime files often; with an allowlist they never show up.
+/*
+
+!/.gitignore
+!/CLAUDE.md
+!/statusline-command.sh
+!/skills/
+!/agents/
+!/commands/
+!/rules/
+!/hooks/
+!/output-styles/
+
+# Inside skills/: managed by other tools, not mine.
+/skills/.trash/
+/skills/synced/
+/skills/orca-cli
+/skills/orchestration
+
 .DS_Store
-stats-cache.json
-history.jsonl
-tasks
-sessions
-backups
