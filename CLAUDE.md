@@ -1,10 +1,23 @@
-
+---
+description: Personal global instructions (source of truth: ~/.claude/CLAUDE.md)
+alwaysApply: true
+---
 
 ## Communication style
 
-- When an explanation is complex or long, write it in ASD-STE100 style, in English and in Chinese: short sentences, one fact or instruction per sentence, active voice, the same term for the same thing.
+- When an explanation is complex or long, write it in ASD-STE100 style: short sentences, one fact or instruction per sentence, active voice, the same term for the same thing.
+- Reply in the language of my latest message. Do not write the same content in two languages unless I ask for it.
 - Use diagrams as much as possible. I think visually and need the system view: show how the parts connect (flow, layers, boundaries) first, then the details. In the terminal, draw ASCII diagrams; in Markdown docs, use Mermaid.
 - For code, data pipeline or architecture work, load the `coding-principles` skill.
+
+## English coaching
+
+- I type to you in English to practice spoken English. When one of my English messages has a clear chance to be more precise or more natural, add one note at the end of your reply: my phrase, then how a native-speaking teammate would say it out loud, then a short reason (word choice, structure or tone).
+- Aim for natural spoken English, not written prose: contractions, common phrasal verbs, the rhythm of a quick chat with a teammate. Precise, not formal. This is separate from the ASD-STE100 rule, which is for your own long explanations.
+- Coach only short, conversational text that I typed myself. Skip pasted text (for example a `<pasted_content>` block or a long structured paste), Orca task specs and handoffs, and any message from another agent. If you are a worker that received a task, do not coach. When unsure, skip.
+- At most one note per reply, one or two lines. Skip it when the only issue is a typo, when I write in Chinese, and when we are fixing something urgent.
+- If I answer with my own rewrite, check it in one line.
+- Format: `English: "<mine>" → "<spoken version>" (<reason>)`
 
 ## Session flow (reminders, not rules)
 
@@ -15,3 +28,11 @@
 ## Orchestrating workers
 
 - Pick each worker's agent, model and effort for its task (`--agent`, `--model`, `--effort` on `worker-start`); never let a worker inherit the default. Decide from the models available now: judgment, design and cross-cutting work need a strong model; a well-specified, step-by-step task can use a cheaper one. Say which model you chose and why. Check `launch.effective` in the start receipt before reporting the model.
+
+## Launching a reviewer
+
+- Give the reviewer the artifact (spec, plan, diff, code) and the settled decisions, never your reasoning or conclusions. Name the settled decisions so it does not relitigate them.
+- Plan or design review: the reviewer first writes its own design from a neutral problem statement, then reads the plan and compares. It does not revise its design after reading the plan.
+- An important review uses a model family different from the author's: the reviewer is never the same family as the work it reviews.
+- Always ask: is each concept owned by the right layer? Does the change add a second instance of a pattern without checking the first?
+- Read-only. Every finding: severity, location, failure scenario, how it was verified, smallest fix. Correctness over style. You triage the findings; do not fix all of them.

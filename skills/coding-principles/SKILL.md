@@ -6,6 +6,7 @@ description: Load before designing or writing code, data pipelines, schemas, API
 # Design defaults
 
 - Start from the business questions. Describe the final state (what exists and which question each part answers), not the process.
+- **Complexity is a stop signal.** If a design or a fix needs a new branch, flag, special case, or multi-step workaround, stop: the data model or the API choice is probably wrong. Find the right shape first; then the code gets small. Check this again during the build, not only in the plan.
 - Before building, define done as checks the owner can run (queries, test questions).
 - Extend existing structures. Do not change the meaning of an existing field. Add only what a question needs.
 - Prefer the smaller change. Keep nothing "for later": no unused fields, docs or code (YAGNI).
